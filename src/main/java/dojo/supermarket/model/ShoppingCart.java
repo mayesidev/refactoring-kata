@@ -47,10 +47,7 @@ public class ShoppingCart {
                 } else if (offer.offerType == SpecialOfferType.TWO_FOR_AMOUNT) {
                     x = 2;
                     if (quantityAsInt >= 2) {
-                        int intDivision = quantityAsInt / x;
-                        double pricePerUnit = offer.argument * intDivision;
-                        double theTotal = (quantityAsInt % 2) * unitPrice;
-                        double total = pricePerUnit + theTotal;
+                        double total = offer.argument * quantityAsInt / x + (quantityAsInt % 2) * unitPrice;
                         double discountN = unitPrice * quantity - total;
                         discount = new Discount(p, "2 for " + offer.argument, -discountN);
                     }
