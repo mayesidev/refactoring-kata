@@ -1,21 +1,26 @@
 package dojo.supermarket.demo;
 
-public class BuyOneGetOneHalfOff {
-    public static double calcBuyOneGetOneHalfOff(int quantity, double price){
-        if(quantity == 3){
-            return price*2 + price*.5;
+public class Deals {
+    public static double calcBuyOneGetOneHalfOff(int itemNumber, double itemValue){
+        double total = 0;
+        if(itemNumber > 2 && itemNumber % 2 == 0){
+            return (itemValue * 2 - itemValue * .5) * itemNumber/2;
         }
-        else if(quantity > 2 && quantity % 2 == 0){
-            return (price * 2 - price * .5) * quantity/2;
+        else if (itemNumber > 2 && itemNumber % 2 != 0){
+            return (itemValue * (itemNumber % 2)) + (itemValue * 2 - itemValue / 2) * (itemNumber-(itemNumber % 2))/2;
         }
-        else if (quantity > 2 && quantity % 2 != 0){
-            return (price * (quantity % 2)) + (price * 2 - price * .5) * (quantity-(quantity % 2))/2;
+//        else if(quantity == 4){
+//            return price*2 + price*2*.5;
+//        }
+        else if(itemNumber == 3){
+            return itemValue*2 + itemValue * .5;
         }
-        else if(quantity == 2){
-            return price * 2 - price * .5;
+        else if(itemNumber == 2){
+            return itemValue * 2 - itemValue / 2;
         }
-        else if(quantity == 1){
-            return price;
+        else if(itemNumber == 1){
+            total = itemValue;
+            return total;
         }
         else{
             return 0;
